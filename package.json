@@ -1,19 +1,26 @@
 {
-  "name": "rct201-web16c3",
+  "name": "express",
   "version": "1.0.0",
+  "description": "- Create a voting system for users\r - the voting system has 2 types of user:\r   - Voters\r   - Candidates\r - Every Candidate belong to a \"Party\"\r   - PartyA\r   - PartyB\r - you differentiate between users based on their \"Role\"\r - Every user has folloing attributes:\r   - id (uuid)\r   - name\r   - role (voter/candidate)\r   - age\r - if users role is candidate he has more following fields:\r   - votes (total votes he got)\r   - party (which party he belongs to)\r - If user is 'voter' he has following additional fields:\r   - username \r   - password\r - create such mock dummy data\r - only voters are allowed to vote\r - if a voter is not logged in he is not allowed to vote\r - Every single request needs to have a query param called as `apiKey`\r - it's value is a token, read more about it below in login section\r - obviously, only `create`, `login` and logout routes will not need `apiKey`, it's only for `/votes/*` routes.\r - other every single route will need it\r - create a auth middleware for such\r - You have following routes:\r   - `/user/create`\r     - to create a new user in the db\r     - method:POST\r     - body: entire user object\r     - returns: 201 code, `{status: \"user created\", id of user }`\r   - `/user/login`\r     - to log user in.\r     - method: POST\r     - body: username, password\r     - if username or password is not provided, return 400 status with message `{ status: \"please provide username and password\" }`\r     - look for a user in db who has same username and password, if found:\r     - generate a random token for user\r     - store that token with the user object in db\r     - returns: `{ status: \"Login Successful\", token }`\r     - if user not found, return 401, `{ status: \"Invalid Credentials\" }`\r   - `/user/logout`\r     - to log user out\r     - Method: POST\r     - delete the `token` property from user in db.\r     - return `{ status: \"user logged out successfully\" }`\r   - `/votes/party/:party`\r     - Get list of all candidates by party name\r     - GET\r   - `/votes/voters`\r     - GET\r     - get list of all 'voters'\r   - `/votes/vote/:user`\r     - POST\r     - Vote a user, just increment vote count by 1 in db\r   - `/votes/count/:user`\r     - Get total count of votes of a candidate\r     - `{ status: x }` in success, where x is count\r     - `{ status: \"cannot find user\" }` if user not found\r   - Apart from these route, create 2 routes for test cases:\r     - `/db`, GET, will just return the entire db.json as it is\r     - `/db` POST, will store WHATEVER we give in req.body to db.json (override entire previous data)\r     - both of these are only for test cases so they wont need apikey or anything else.\r - These are the only routes you need to make\r - for simplicity you can use synchronous file reading and writting methods, asynchronous is also acceptable\r - Once done, deploy the application to `heroku`",
   "main": "index.js",
-  "license": "MIT",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdarshadkhan1998/express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdarshadkhan1998/express/issues"
+  },
+  "homepage": "https://github.com/mdarshadkhan1998/express#readme",
   "dependencies": {
+    "@jest/globals": "^28.1.0",
     "axios": "^0.27.2",
     "express": "^4.18.1",
-    "jest": "^28.1.0",
     "nodemon": "^2.0.16"
-  },
-  "engines": {
-    "node": "16.x"
   }
 }
