@@ -6,8 +6,8 @@
             "username": "john",
             "password": "1234",
             "age": 15,
-            "token": "6f85eca06c",
-            "id": 1
+            "id": 1,
+            "token": "00add56a-97cc-4fc9-ba3f-ff0c0f08e9c8"
         },
         {
             "name": "Donald Trump",
@@ -15,7 +15,8 @@
             "votes": 0,
             "party": "republicans",
             "age": 15,
-            "id": 2
+            "id": 2,
+            "token": "8ade0329-c8b3-4cf7-845b-6d03e7f7171f"
         },
         {
             "id": "4",
